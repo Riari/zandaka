@@ -3,43 +3,50 @@
 	import '../app.css';
 </script>
 
-<Header />
-
-<main>
-	<slot />
-</main>
-
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-</footer>
+<div class="layout">
+	<Header />
+	
+	<main>
+		<div>
+			<slot />
+		</div>
+	</main>
+	
+	<footer>
+		<div>
+			Zandaka. An app by <a href="https://riari.dev/">riari.dev</a>.
+		</div>
+	</footer>
+</div>
 
 <style>
+	.layout {
+		display: flex;
+		min-height: 100vh;
+		flex-direction: column;
+	}
+
+	main div,
+	footer div {
+		margin: 0 auto;
+		min-width: 800px;
+		max-width: 80vw;
+	}
+
 	main {
 		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 1024px;
-		margin: 0 auto;
-		box-sizing: border-box;
+		padding: 2em 1em;
+		color: var(--text-color);
 	}
 
 	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40px;
+		border-top: 1px solid var(--secondary-color);
+		padding: 2em 1em;
+		color: var(--primary-color);
 	}
 
 	footer a {
+		color: var(--primary-color);
 		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
 	}
 </style>

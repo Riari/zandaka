@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Counter from '$lib/Counter.svelte';
+	import TestModule from '$lib/dashboard/TestModule.svelte';
 </script>
 
 <svelte:head>
@@ -7,51 +7,40 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+<div class="dashboard">
+	<div class="dashboard__left">
+		<TestModule>
+			<div slot="title">Trips</div>
+			<div slot="content">-</div>
+		</TestModule>
+	</div>
+	<div class="dashboard__centre">
+		<TestModule>
+			<div slot="title">Recent Activity</div>
+			<div slot="content">-</div>
+		</TestModule>
+	</div>
+	<div class="dashboard__right">
+		<TestModule>
+			<div slot="title">Account</div>
+			<div slot="content">-</div>
+		</TestModule>
+	</div>
+</div>
 
 <style>
-	section {
+	.dashboard {
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		flex-direction: row;
+	}
+
+	.dashboard__left,
+	.dashboard__right {
 		flex: 1;
 	}
 
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	.dashboard__centre {
+		flex: 2;
+		padding: 0 1em;
 	}
 </style>
